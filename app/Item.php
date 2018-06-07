@@ -172,10 +172,11 @@ class Item extends Model
 
     public function getLinkTargetAttribute()
     {
-        if((int)$this->type === 1) {
+        $target = Setting::all()[6]['value'];
+        if((int)$this->type === 1 || $target == 'current' ) {
             return '';
         } else {
-            return ' target="heimdallapp"';
+            return ' target="' . $target . '"';
         }
     }
 
